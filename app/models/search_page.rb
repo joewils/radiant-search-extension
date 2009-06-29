@@ -90,6 +90,8 @@ class SearchPage < Page
       sql_content_check = "((lower(page_parts.content) LIKE ?) OR (lower(title) LIKE ?))"
     when 'mysql'
       sql_content_check = "((LOWER(page_parts.content) LIKE ?) OR (LOWER(title) LIKE ?))"
+    when 'sqlite'
+      sql_content_check = "((LOWER(page_parts.content) LIKE ?) OR (LOWER(title) LIKE ?))"
     end
     unless (@query = q.to_s.strip).blank?
       tokens = query.split.collect { |c| "%#{c.downcase}%"}
